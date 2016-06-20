@@ -1,0 +1,14 @@
+.idea/
+node_modules/
+build/
+src/
+.DS_Store
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+.sass-cache
+node_modules
