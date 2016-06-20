@@ -1,0 +1,24 @@
+{
+  "name": "picker",
+  "version": "1.0.0",
+  "description": "simulation select modual of iphone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dynicyan/Picker-h5.git"
+  },
+  "keywords": [
+    "picker",
+    "iphones",
+    "select"
+  ],
+  "author": "dynicyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dynicyan/Picker-h5/issues"
+  },
+  "homepage": "https://github.com/dynicyan/Picker-h5#readme"
+}
