@@ -54,7 +54,6 @@
 <script src="scripts/picker.js"></script>
 <script>
   FastClick.attach(document.body);
-
   var data1 = [
     {
       text: '剧毒',
@@ -181,11 +180,13 @@
   var $picker4 = $('#picker4');
 
   $picker1.picker({
+    // selectIndex:'data1[selectIndex[5]]',
+    showCls: 'show',
     data: [data1]
   }).on('picker.select', function (e, selectVal, selectIndex) {
     $(this).text(data1[selectIndex[0]].text);
   }).on('picker.change', function (e, index, selectIndex) {
-    console.log(index);
+    console.log(selectIndex);
   }).on('picker.valuechange', function (e, selectVal, selectIndex) {
     console.log(selectVal);
   });
@@ -211,15 +212,15 @@
     console.log(selectVal);
   });
 
-  $picker1.on('click', function () {
+  $picker1.on('tap', function () {
     $(this).picker('show');
   });
 
-  $picker2.on('click', function () {
+  $picker2.on('tap', function () {
     $(this).picker('show');
   });
 
-  $picker3.on('click', function () {
+  $picker3.on('tap', function () {
     $(this).picker('show');
   });
 
@@ -237,7 +238,7 @@
   });
 
 
-  $picker4.on('click', function () {
+  $picker4.on('tap', function () {
     index++;
     index = index % 3;
     $picker4.picker('show', function () {
