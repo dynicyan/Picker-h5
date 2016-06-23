@@ -1,0 +1,48 @@
+{
+  "dy":{
+    "name":"dongyan",
+    "age":"18",
+    "hobby":"sing gitar swimming tennis",
+    "school":"Qingdao Agricultural University",
+    "degree":"B.S.(Bachelor of Science)",
+    "profession":" Web Software Engineer",
+    "tel":"152*****570",
+    "lang":"Chinese English"
+  },
+  "exp":[{
+    "ymd":"July 2013 1",
+    "place":"Qingdao",
+    "event":"graduate from my University",
+    "job":"editor and  journalist",
+    "goal":"to be a technological worker",
+    "dest":"Shanghai"
+  },{
+    "ymd":"November 2013 1",
+    "place":"Jiaxing",
+    "event":"leave my country home",
+    "job":"Factory operator",
+    "goal":"to be a technological worker",
+    "dest":"Shanghai"
+  },{
+    "ymd":"February 2014 1",
+    "place":"Shanghai",
+    "event":"leave my friends and Jiaxing",
+    "job":"Miscellaneous staff",
+    "goal":"to be a technological worker",
+    "dest":"unknow"
+  },{
+    "ymd":"September 2014 1",
+    "place":"Shanghai",
+    "event":"say bye to my lovely  co-workers",
+    "job":"Web Developer",
+    "goal":"to be a technological worker",
+    "dest":"unknow"
+  },{
+    "ymd":"June 2015 15",
+    "place":"Shanghai",
+    "event":"graduate from my University",
+    "job":"Web End Developer",
+    "goal":"to be a technological worker",
+    "dest":"unknow"
+  }]
+}
