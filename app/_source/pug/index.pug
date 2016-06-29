@@ -8,7 +8,7 @@ block append head
 	meta(content="" name="Description")
 	meta(content="" name="Keywords")
 block content
-	h2.exp-title My Basic Information
+	h2.exp-title: i My Basic Information
 	.name name：#{dy.name}
 	.age age：#{dy.age}
 	.hobby hobby：#{dy.hobby}
@@ -18,13 +18,8 @@ block content
 	.tel tel：#{dy.tel}
 	.lang language：#{dy.lang}
 block script
-	<!--build:js js/picker.min.js -->
 	<script src="js/fastclick.js"></script>
+	<!--build:js js/picker.min.js -->
 	<script src="js/gmu.js"></script>
-	<!-- endbuild -->
-
-
-
-
-	
 	<script src="js/picker.js"></script>
+	<!-- endbuild -->

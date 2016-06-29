@@ -1,0 +1,33 @@
+extends ./layout/layout
+block append head
+	title h5P
+	link(rel='stylesheet' href='css/reset.css')
+	link(rel='shortcut icon' href='http://img1.2345.com/zsimg/images/v2/16.ico' type="image/x-icon")
+	meta(content="" name="Description")
+	meta(content="" name="Keywords")
+block content
+	- var colors = [{src:'../images/slide1.jpg',color:'#f00'},{src:'../images/slide2.jpg',color:'#000'},{src:'../images/slide3.jpg',color:'#ff0'},{src:'../images/slide4.jpg',color:'#0ee'},{src:'../images/slide5.jpg',color:'#00d'}]
+	.slide
+		.slideInner
+			for i in colors
+				.ban_c(style="background:"+i.color)
+					.img(style="background-image:"+ 'url(' + i.src +')')
+						//- img(src=i.src)
+					//- img(src="#{i.src}")
+		.nav
+			a(href="javascript:;").prevBtn
+			a(href="javascript:;").nextBtn
+	.frontCover
+		ul
+block script
+	script(src="js/jquery-1.8.3.min.js")
+	script(src="js/dy-slide.js")
+	script.
+		$(document).ready(function() {
+			$(".slideInner").slide({
+				ranTime: 1000,
+				slideSpeed:700,
+				auto:false,
+				effect:'easeInOutQuint'
+			})
+		})

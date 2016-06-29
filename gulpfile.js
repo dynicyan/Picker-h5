@@ -15,6 +15,25 @@ var gulp = require('gulp'),//引入gulp
 		browserSync = require('browser-sync');//实时刷新
 
 var $ = plugins;
+//雪碧图合成图配置
+var configs = {
+  //修改图片位置
+  spritesSource: './app/images/sprites/*.*',
+  spritesMithConfig: {
+    //由于图片最终是要放到七牛上，这里的cssOpts用来当成最终scss文件中的变量名，详情看scss.template.mustache
+    cssOpts: 'spriteSrc',
+    imgName: '../images/sprite.png',
+    cssName: 'components/sprite.scss',
+    cssFormat: 'scss',
+    cssTemplate: 'scss.template.mustache',
+    algorithm: 'binary-tree',
+    padding: 8,
+    cssVarMap: function(sprite) {
+      sprite.name = 'icon-' + sprite.name
+    }
+  },
+  spritesOutputPath: './app/images/'
+}
 //定义路径
 var paths = {
     sass: './app/_source/scss/',
@@ -58,7 +77,9 @@ gulp.task('compass',function() {
     .pipe($.minifyCss())
     .pipe(gulp.dest(paths.css))
 });
- //编译pug(jade)
+
+
+//编译pug(jade)
 gulp.task('pug',function(){
 	return gulp.src(paths.pug+'*.pug')
 		.pipe($.plumber())
@@ -73,6 +94,8 @@ gulp.task('pug',function(){
 		.pipe($.pug({pretty:true}))
 		.pipe(gulp.dest('./app'))
 });
+
+
 //合并并压缩css  js等 减少服务器请求次数
 gulp.task('useref',['pug'],function(){
   return gulp.src('./app/*.html')
@@ -90,42 +113,19 @@ gulp.task('imagemin', function(){
     })))
   .pipe(gulp.dest('dist/images'))
 });
+
+
 //合成雪碧图
+
 //创建精灵图
-// gulp.task('sprite', function() {
-//   return gulp.src(paths.images+'sprites/*.png')//需要合并的图片地址
-//         .pipe(spritesmith({
-//             imgName: 'sprite.png',//保存合并后图片的地址
-//             cssName: 'sprite.css',//保存合并后对于css样式的地址
-//             padding:5,//合并时两个图片的间距
-//             algorithm: 'binary-tree',//注释1
-//             cssTemplate:paths.css+'sprite.css'//注释2
-//         }))
-//         .pipe(gulp.dest( paths.css));
-// })
-//压缩
-// gulp.task('sprite:images', function() {
-//   return gulp.src(configs.spritesOutputPath + '/**/*.+(png|jpg|jpeg|gif|svg)')
-//   // Caching images that ran through imagemin
-//   .pipe($.imagemin({
-//       interlaced: true,
-//     }))
-//   .pipe(gulp.dest(configs.spritesOutputPath))
-// });
-//打开文件目录
-// gulp.task('sprite:open', function() {
-//   gulp.src('')
-//     .pipe($.open({app: 'Finder', uri: configs.spritesOutputPath}));
-// })
-//总命令
-// gulp.task('sprite', function(callback) {
-//   runSequence(
-//     'sprite:build', 
-//     'sprite:images',
-//     'sprite:open',
-//     callback
-//   )
-// });
+gulp.task('sprite', function(){
+	var spriteData = gulp.src(configs.spritesSource) // source path of the sprite images
+	    .pipe(spritesmith(
+	        configs.spritesMithConfig
+	    ));
+	spriteData.img.pipe(gulp.dest(configs.spritesOutputPath)); // output path for the sprite
+	spriteData.css.pipe(gulp.dest(paths.sass)); // output path for the CSS
+})
 //实时刷新
 gulp.task('browserSync', function() {
   browserSync({
@@ -149,7 +149,7 @@ gulp.task('clean:dist', function(callback){
   del(['dist/**/*', '!dist/images', '!dist/images/**/*'], callback)
 });
 //default task
-gulp.task('server', ['compass','pug','browserSync'], function (){
+gulp.task('server', ['compass','pug','sprite','browserSync'], function (){
   gulp.watch('./app/_source/scss/*.{scss,sass}', ['compass']);
   gulp.watch('./app/_source/pug/*.pug', ['pug']);
   // Reloads the browser whenever HTML or JS files change
@@ -163,7 +163,7 @@ gulp.task('default',['server'])
 gulp.task('build', function(callback) {
   runSequence(
   	'clean:dist',
-    ['compass', 'pug','useref','imagemin'],
+    ['compass', 'pug','useref','sprite','imagemin'],
     callback
   )
 })

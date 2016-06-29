@@ -1,0 +1,50 @@
+<!DOCTYPE html><!--[if lt IE 6]><html class="ie6"><![endif]-->
+<!--[if IE 7]><html class="ie7"><![endif]-->
+<!--[if IE 8]><html class="ie8"><![endif]-->
+<!--[if gte IE 9]><html class="ie9"><![endif]-->
+<html>
+<head>
+  <meta charset="gb2312">
+  <title>h5P</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="shortcut icon" href="http://img1.2345.com/zsimg/images/v2/16.ico" type="image/x-icon">
+  <meta content="" name="Description">
+  <meta content="" name="Keywords">
+</head>
+<body>
+  <div class="slide">
+    <div class="slideInner">
+      <div class="ban_c" style="background:#f00">
+        <div class="img" style="background-image:url(../images/slide1.jpg)"></div>
+      </div>
+      <div class="ban_c" style="background:#000">
+        <div class="img" style="background-image:url(../images/slide2.jpg)"></div>
+      </div>
+      <div class="ban_c" style="background:#ff0">
+        <div class="img" style="background-image:url(../images/slide3.jpg)"></div>
+      </div>
+      <div class="ban_c" style="background:#0ee">
+        <div class="img" style="background-image:url(../images/slide4.jpg)"></div>
+      </div>
+      <div class="ban_c" style="background:#00d">
+        <div class="img" style="background-image:url(../images/slide5.jpg)"></div>
+      </div>
+    </div>
+    <div class="nav"><a class="prevBtn" href="javascript:;"></a><a class="nextBtn" href="javascript:;"></a></div>
+  </div>
+  <div class="frontCover">
+    <ul></ul>
+  </div>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="js/dy-slide.js"></script>
+  <script>
+    $(document).ready(function() {
+    	$(".slideInner").slide({
+    		ranTime: 1000,
+    		slideSpeed:700,
+    		auto:false,
+    		effect:'easeInOutQuint'
+    	})
+    })
+  </script>
+</body>
