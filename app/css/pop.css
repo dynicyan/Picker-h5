@@ -60,3 +60,18 @@ The `sprites` mixin generates identical output to the CSS template
 
 @include sprites($spritesheet-sprites);
 */
+.alert, .prompt, .confirm, .opennew {
+  width: 280px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  background-color: #3097fd;
+  color: #fff;
+  font-size: 24px;
+  border-radius: 5px;
+  margin: 20px;
+  cursor: pointer;
+}
+.alert:hover, .prompt:hover, .confirm:hover, .opennew:hover {
+  background-color: #2b88e3;
+}

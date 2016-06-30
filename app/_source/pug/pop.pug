@@ -1,9 +1,15 @@
 extends ./layout/layout
 block append head
 	title 弹出框demo
-	link(rel='stylesheet' href='css/reset.css')
+	link(rel='stylesheet' href='css/pop.css')
 	link(rel='shortcut icon' href='http://img1.2345.com/zsimg/images/v2/16.ico' type="image/x-icon")
 	meta(content="" name="Description")
 	meta(content="" name="Keywords")
 block content
-	
+	.alert alert--popdialog
+	.prompt prompt--popdialog
+	.confirm confirm--popdialog
+	.opennew newhtml--popdialog
+block script
+	script(src="./js/jquery-1.8.3.min.js")
+	script(src="./js/dy.dialog.js")

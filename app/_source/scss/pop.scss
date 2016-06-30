@@ -1,1 +1,16 @@
 @import "compass","compass/reset","compass/css3","_sp-mixin";
+.alert,.prompt,.confirm,.opennew{
+	width: 280px;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	background-color: #3097fd;
+	color: #fff;
+	font-size: 24px;
+	@include border-radius(5px);
+	margin: 20px;
+	cursor:pointer;
+	&:hover{
+		background-color:#2b88e3
+	}
+}

@@ -133,7 +133,7 @@ gulp.task('browserSync', function() {
       port: 7000,
       server: {
           baseDir: './app',
-          index: 'index.html',
+          index: 'pop.html',
           routes: {
               // '/bower_components': 'bower_components'
           }
