@@ -1,0 +1,49 @@
+@import "compass","compass/reset","compass/css3";
+html {
+    margin: 0 auto;
+    height: 100%;
+    overflow-y: scroll;
+}
+body{
+	font-family: "微软雅黑";
+	width: 100%;height: 100%;
+	position: relative;
+	// &.of{overflow: hidden;}
+}
+.scroll-con{
+	width: 720px;
+	height: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	&.auto{
+		min-height: 1000px;
+		height: auto;
+		.scroll-wrap{
+			height: 1000px
+		}
+	}
+}
+.scroll-wrap{
+	width: 100%;
+	background-color: #fc3709;
+	// margin-top: 50px;
+	color: #fff;
+	font-size: 36px;
+	text-align: center;
+	height: 100%;
+	.btn{
+		position: absolute;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		bottom: 20px;
+		font-size: 24px;
+		color: #fee;
+	}
+}
+.scroll-text{
+	width: 90%;
+	margin: 0 auto;
+	height: 1100px;
+	background-color: #37fc49;
+}

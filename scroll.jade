@@ -1,0 +1,56 @@
+extends ./layout/layout
+block append head
+	title 表单验证
+	link(rel='stylesheet' href='css/scroll.css')
+	link(rel='shortcut icon' href='http://img1.2345.com/zsimg/images/v2/16.ico' type="image/x-icon")
+	meta(content="" name="Description")
+	meta(content="" name="Keywords")
+block content
+	.scroll-con
+		.scroll-wrap 关于zepto插件对于fx.js(即animate方法的支持)与scrollTop事件的支持
+			span.btn 点击向下滑动
+		.scroll-text
+block script
+	<script src="http://img1.2345.com/zhushouimg/js/m/zepto.min.js"></script>
+	//- <script src="js/scrollTo.js"></script>
+	script.
+		$.fn.scrollTo = function(options){
+			var defaults = {
+				sTo:0, //滚动目标位置
+				durtime:270, //滚动时间
+				delay:30, //定时器时间
+				callback:null //回调函数
+			};
+			var opts = $.extend(defaults,options),
+				timer = null,
+				_this = this,
+				curTop = _this.scrollTop(),//滚动条当前的位置
+				subTop = opts.sTo - curTop,//滚动条目标位置距离当前位置的差值
+				index = 0,
+				dur = Math.round(opts.durtime/opts.delay);
+				smoothScroll = function(t){
+					index ++;
+					var per = Math.round(subTop/dur);
+					if(index >= dur){
+						_this.scrollTop(t);
+						window.clearInterval(timer);
+						if(opts.callback && typeof opts.callback == 'function'){
+							opts.callback();
+						}
+						return;
+					}else{
+						_this.scrollTop(curTop + index*per)
+					}
+				};
+			timer = window.setInterval(function(){
+				smoothScroll(opts.sTo);
+			},opts.delay);
+			return _this;
+		};
+
+		$('.btn').on("click",function(){
+			var $height=$(this).offset().top;
+			console.log($height);
+			$('.scroll-con').addClass('auto');
+			$('html,body').scrollTo({sTo:$height});
+		});
