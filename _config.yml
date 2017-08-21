@@ -2,7 +2,7 @@ title: Picker
 description: h5 picker inspired by ios UIPickerView
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-slate
+theme: jekyll-theme-cayman
 
 gems:
   - jekyll-mentions
